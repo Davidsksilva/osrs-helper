@@ -1,6 +1,6 @@
 import React from 'react';
 
-function App() {
+function Main() {
   return (
     <div>
       <h1>OSRS Helper</h1>
@@ -8,4 +8,4 @@ function App() {
   );
 }
 
-export default App;
+export default Main;
