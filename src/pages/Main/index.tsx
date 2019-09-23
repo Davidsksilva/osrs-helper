@@ -1,11 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-function Main() {
+import { Container, SearchContainer, SearchForm } from './styles';
+
+const Main = () => {
+  const [username, setUsername] = useState<string | undefined>('');
+
+  function handleUsernameChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setUsername(e.target.value);
+  }
+
   return (
-    <div>
-      <h1>OSRS Helper</h1>
-    </div>
+    <Container>
+      <SearchContainer>
+        <h1>OSRS Helper</h1>
+
+        <SearchForm>
+          <input
+            type="text"
+            placeholder="OSRS Account"
+            value={username}
+            onChange={handleUsernameChange}
+          />
+        </SearchForm>
+      </SearchContainer>
+    </Container>
   );
-}
+};
 
 export default Main;

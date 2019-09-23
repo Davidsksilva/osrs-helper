@@ -9,11 +9,14 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
+  html, body, #root{
+    min-height: 100%
+  }
+
   body {
-    background-color: #000000;
+    background-color: #292929;
     -webkit-font-smoothing: antialiased;
     color: #fff;
-
-
   }
+  
 `;

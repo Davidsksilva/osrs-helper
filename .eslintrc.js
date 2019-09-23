@@ -7,6 +7,8 @@ module.exports = {
   extends: [
     'react-app',
     'airbnb',
+    'prettier',
+    'prettier/react',
     'plugin:@typescript-eslint/recommended',
     'prettier/@typescript-eslint',
   ],
@@ -14,6 +16,7 @@ module.exports = {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
   },
+  parser: 'babel-eslint',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -21,7 +24,7 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
-  plugins: ['react', 'import', 'jsx-a11y'],
+  plugins: ['react', 'import', 'jsx-a11y','prettier'],
   rules: {
     'react/jsx-filename-extension': [
       'error',
