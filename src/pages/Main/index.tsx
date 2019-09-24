@@ -29,7 +29,34 @@ const Main = () => {
       },
     });
 
-    console.log(response.data);
+    const formatedData: string[] = response.data.split(/\r?\n/);
+    console.log(formatedData);
+    return formatedData;
+  }
+
+  interface HiscoreEntry {
+    name: string;
+    level: number;
+    xp: number;
+    rank: number;
+  }
+
+  interface HiscoreXp {
+    level: number;
+    xp: number;
+    rank: number;
+  }
+
+  async function processHiscore() {
+    const rawHiscore: string[] = await fetchHiscore();
+    const hiscores: HiscoreXp[] = rawHiscore.map(h => {
+      const splitted: string[] = h.split(',');
+      return {
+        rank: parseInt(splitted[0]),
+        level: parseInt(splitted[1]),
+        xp: parseInt(splitted[2]),
+      };
+    });
   }
 
   return (
