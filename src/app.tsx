@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 import Routes from './routes';
 
@@ -6,11 +6,11 @@ import GlobalStyle from './styles/global';
 
 const app = () => {
   return (
-   <>
-   <Routes/>
-   <GlobalStyle/>
-   </>
-  )
-}
+    <>
+      <GlobalStyle />
+      <Routes />
+    </>
+  );
+};
 
-export default app
+export default app;

@@ -17,7 +17,7 @@ const Main = () => {
         <SearchForm>
           <input
             type="text"
-            placeholder="OSRS Account"
+            placeholder="OSRS Usermane"
             value={username}
             onChange={handleUsernameChange}
           />

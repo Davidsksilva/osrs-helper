@@ -13,13 +13,20 @@ export const Container = styled.div`
 export const SearchContainer = styled.div`
   display: flex;
   width: 400px;
-
+  flex-direction: column;
   background-color: #261e15;
+  align-items: center;
+
+  h1 {
+    font-family: 'Runescape';
+    color: yellow;
+  }
 `;
 
 export const SearchForm = styled.form`
   display: flex;
   flex-direction: row;
+  height: 60px;
 
   input {
     flex: 1;
