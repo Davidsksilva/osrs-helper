@@ -34,5 +34,9 @@ export default createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     color: #fff;
   }
+
+  button {
+    cursor: pointer;
+  }
   
 `;
