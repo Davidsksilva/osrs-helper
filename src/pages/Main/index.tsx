@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
+
+import axios from 'axios';
+
+import { hiscoreUrl, proxyUrl } from '../../constants/urls';
 import { Container, SearchContainer, SearchForm, SubmitButton } from './styles';
 
 const Main = () => {
@@ -11,6 +15,21 @@ const Main = () => {
 
   async function handleSubmit(e: React.ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    fetchHiscore();
+  }
+
+  async function fetchHiscore() {
+    const response = await axios.get(`${proxyUrl}${hiscoreUrl}`, {
+      headers: {
+        crossorigin: true,
+      },
+      params: {
+        player: username,
+      },
+    });
+
+    console.log(response.data);
   }
 
   return (
