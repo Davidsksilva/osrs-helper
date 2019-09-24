@@ -36,7 +36,7 @@ export const SearchForm = styled.form`
     color: #fff;
     padding: 10px 15px;
     border-radius: 4px;
-    font-size: 18px;
+    font-size: 24px;
   }
 `;
 
