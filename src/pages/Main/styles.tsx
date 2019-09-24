@@ -60,9 +60,15 @@ export const SubmitButton = styled.button.attrs<SubmitButtonProps>(
   justify-content: center;
   align-items: center;
   transition: background-color 500ms linear;
+  border: 2px solid #212121;
 
   &[disabled] {
     cursor: not-allowed;
     opacity: 0.6;
+  }
+
+  &:hover {
+    background-color: #333;
+    border: 2px solid #212121;
   }
 `;
