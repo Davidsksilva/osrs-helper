@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaSearch } from 'react-icons/fa';
+import { FaSearch, FaSpinner } from 'react-icons/fa';
 
 import axios from 'axios';
 
@@ -8,6 +8,7 @@ import { Container, SearchContainer, SearchForm, SubmitButton } from './styles';
 
 const Main = () => {
   const [username, setUsername] = useState<string | undefined>('');
+  const [loading, setLoading] = useState<boolean>(false);
 
   function handleUsernameChange(e: React.ChangeEvent<HTMLInputElement>) {
     setUsername(e.target.value);
@@ -16,7 +17,13 @@ const Main = () => {
   async function handleSubmit(e: React.ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    fetchHiscore();
+    try {
+      setLoading(true);
+      await fetchHiscore();
+      setLoading(false);
+    } catch (err) {
+      setLoading(false);
+    }
   }
 
   async function fetchHiscore() {
@@ -71,8 +78,12 @@ const Main = () => {
             value={username}
             onChange={handleUsernameChange}
           />
-          <SubmitButton>
-            <FaSearch color="#fff" size={16} />
+          <SubmitButton loading={loading ? 1 : 0}>
+            {loading ? (
+              <FaSpinner color="#fff" size={16} />
+            ) : (
+              <FaSearch color="#fff" size={16} />
+            )}
           </SubmitButton>
         </SearchForm>
       </SearchContainer>
