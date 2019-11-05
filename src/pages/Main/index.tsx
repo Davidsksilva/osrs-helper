@@ -5,6 +5,8 @@ import axios from 'axios';
 
 import { hiscoreUrl, proxyUrl } from '../../constants/urls';
 import { Container, SearchContainer, SearchForm, SubmitButton } from './styles';
+import { skills, activities } from '../../constants/experienceLabels';
+import { ActivityEntry, SkillEntry } from './types';
 
 const Main = () => {
   const [username, setUsername] = useState<string | undefined>('');
@@ -37,33 +39,32 @@ const Main = () => {
     });
 
     const formatedData: string[] = response.data.split(/\r?\n/);
-    console.log(formatedData);
-    return formatedData;
+    processHiscore(formatedData);
   }
 
-  interface HiscoreEntry {
-    name: string;
-    level: number;
-    xp: number;
-    rank: number;
-  }
-
-  interface HiscoreXp {
-    level: number;
-    xp: number;
-    rank: number;
-  }
-
-  async function processHiscore() {
-    const rawHiscore: string[] = await fetchHiscore();
-    const hiscores: HiscoreXp[] = rawHiscore.map(h => {
-      const splitted: string[] = h.split(',');
+  function processHiscore(formattedData: string[]) {
+    const skillsHiscore: SkillEntry[] = skills.map((h, index) => {
+      const splitted: string[] = formattedData[index].split(',');
       return {
+        name: h,
         rank: parseInt(splitted[0]),
         level: parseInt(splitted[1]),
         xp: parseInt(splitted[2]),
       };
     });
+
+    const activitiesHiscore: ActivityEntry[] = activities.map((h, i) => {
+      const index = i + skills.length;
+      const splitted: string[] = formattedData[index].split(',');
+
+      return {
+        name: h,
+        rank: parseInt(splitted[0]),
+        score: parseInt(splitted[1]),
+      };
+    });
+
+    console.log([...skillsHiscore, ...activitiesHiscore]);
   }
 
   return (
