@@ -6,7 +6,7 @@ export const Container = styled.div`
   padding: 40px 80px;
   width: 100%;
   height: 100%;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
 `;
 
@@ -89,4 +89,9 @@ export const SubmitButton = styled.button.attrs<SubmitButtonProps>(
         animation: ${rotate} 2s linear infinite;
       }
     `}
+`;
+
+export const Content = styled.div`
+  display: flex;
+  margin-top: 40px;
 `;

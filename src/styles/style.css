@@ -1,0 +1,15 @@
+@font-face {
+  font-family: 'Runescape';
+  src: local('Runescape'),
+    url('../fonts/RuneScape-Plain-12.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Runescape';
+  src: local('Runescape'),
+    url('../fonts/RuneScape-Bold-12.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}

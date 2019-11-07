@@ -4,13 +4,24 @@ import { FaSearch, FaSpinner } from 'react-icons/fa';
 import axios from 'axios';
 
 import { hiscoreUrl, proxyUrl } from '../../constants/urls';
-import { Container, SearchContainer, SearchForm, SubmitButton } from './styles';
+import {
+  Container,
+  SearchContainer,
+  SearchForm,
+  SubmitButton,
+  Content,
+} from './styles';
 import { skills, activities } from '../../constants/experienceLabels';
-import { ActivityEntry, SkillEntry } from './types';
+import { ActivityEntry, SkillEntry } from '../../interfaces/HiscoreEntry/types';
+import SkillTable from '../../components/SkillTable';
 
 const Main = () => {
   const [username, setUsername] = useState<string | undefined>('');
   const [loading, setLoading] = useState<boolean>(false);
+  const [skillsHiscore, setSkillsHistore] = useState<SkillEntry[]>([]);
+  const [activitiesHiscore, setActivitiesHiscore] = useState<ActivityEntry[]>(
+    []
+  );
 
   function handleUsernameChange(e: React.ChangeEvent<HTMLInputElement>) {
     setUsername(e.target.value);
@@ -19,20 +30,12 @@ const Main = () => {
   async function handleSubmit(e: React.ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    try {
-      setLoading(true);
-      await fetchHiscore();
-      setLoading(false);
-    } catch (err) {
-      setLoading(false);
-    }
+    await fetchHiscore();
   }
 
   async function fetchHiscore() {
+    setLoading(true);
     const response = await axios.get(`${proxyUrl}${hiscoreUrl}`, {
-      headers: {
-        crossorigin: true,
-      },
       params: {
         player: username,
       },
@@ -40,10 +43,11 @@ const Main = () => {
 
     const formatedData: string[] = response.data.split(/\r?\n/);
     processHiscore(formatedData);
+    setLoading(false);
   }
 
   function processHiscore(formattedData: string[]) {
-    const skillsHiscore: SkillEntry[] = skills.map((h, index) => {
+    const skillsH: SkillEntry[] = skills.map((h, index) => {
       const splitted: string[] = formattedData[index].split(',');
       return {
         name: h,
@@ -53,7 +57,7 @@ const Main = () => {
       };
     });
 
-    const activitiesHiscore: ActivityEntry[] = activities.map((h, i) => {
+    const activitiesH: ActivityEntry[] = activities.map((h, i) => {
       const index = i + skills.length;
       const splitted: string[] = formattedData[index].split(',');
 
@@ -64,7 +68,8 @@ const Main = () => {
       };
     });
 
-    console.log([...skillsHiscore, ...activitiesHiscore]);
+    setSkillsHistore(skillsH);
+    setActivitiesHiscore(activitiesH);
   }
 
   return (
@@ -88,6 +93,9 @@ const Main = () => {
           </SubmitButton>
         </SearchForm>
       </SearchContainer>
+      <Content>
+        <SkillTable data={skillsHiscore} />
+      </Content>
     </Container>
   );
 };
