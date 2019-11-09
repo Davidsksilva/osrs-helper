@@ -2,8 +2,7 @@ import React from 'react';
 
 import { SkillEntry } from '../../interfaces/HiscoreEntry/types';
 
-import { Container, SkillItem } from './styles';
-import image from '../../assets/attack_icon.png';
+import { Container, GridItem, Total, Skill } from './styles';
 
 interface Props {
   data: SkillEntry[];
@@ -11,13 +10,18 @@ interface Props {
 const SkillTable = ({ data }: Props) => {
   const renderSkillItem = () => {
     return data.map(s => (
-      <SkillItem key={s.name}>
+      <GridItem key={s.name}>
         {s.name !== 'Overall' ? (
-          <img src={`/images/${s.name}_icon.png`} alt={s.name} />
+          <>
+            <Skill>
+              <img src={`/images/${s.name}_icon.png`} alt={s.name} />
+              {s.level}
+            </Skill>
+          </>
         ) : (
-          <></>
+          <Total>{s.level}</Total>
         )}
-      </SkillItem>
+      </GridItem>
     ));
   };
   return data.length ? <Container>{renderSkillItem()}</Container> : <></>;
