@@ -11,7 +11,11 @@ import {
   SubmitButton,
   Content,
 } from './styles';
-import { skills, activities } from '../../constants/experienceLabels';
+import {
+  skills,
+  activities,
+  skillsOrder,
+} from '../../constants/experienceLabels';
 import { ActivityEntry, SkillEntry } from '../../interfaces/HiscoreEntry/types';
 import SkillTable from '../../components/SkillTable';
 
@@ -54,8 +58,12 @@ const Main = () => {
         rank: parseInt(splitted[0]),
         level: parseInt(splitted[1]),
         xp: parseInt(splitted[2]),
+        index: skillsOrder[index],
       };
     });
+    console.log(skillsH);
+    skillsH.sort((a, b) => a.index - b.index);
+    console.log(skillsH);
 
     const activitiesH: ActivityEntry[] = activities.map((h, i) => {
       const index = i + skills.length;

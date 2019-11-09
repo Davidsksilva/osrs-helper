@@ -3,6 +3,7 @@ export interface SkillEntry {
   level: number;
   xp: number;
   rank: number;
+  index: number;
 }
 
 export interface ActivityEntry {

@@ -25,6 +25,33 @@ export const skills: string[] = [
   'Construction',
 ];
 
+export const skillsOrder: number[] = [
+  24,
+  1,
+  7,
+  4,
+  2,
+  10,
+  13,
+  16,
+  12,
+  18,
+  17,
+  9,
+  15,
+  14,
+  6,
+  3,
+  8,
+  5,
+  11,
+  20,
+  21,
+  19,
+  23,
+  22,
+];
+
 export const activities: string[] = [
   'Bounty Hunter - Hunter',
   'Bounty Hunter - Rogues',
