@@ -9,7 +9,7 @@ export const Container = styled.div`
 
 export const SkillItem = styled.div`
   background-color: #555551;
-  padding: 4px;
+  padding: 20px;
   font-size: 30px;
   text-align: center;
 `;
