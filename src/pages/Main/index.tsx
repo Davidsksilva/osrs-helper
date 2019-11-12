@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { FaSearch, FaSpinner } from 'react-icons/fa';
-
 import axios from 'axios';
 
 import { hiscoreUrl, proxyUrl } from '../../constants/urls';
@@ -61,9 +60,7 @@ const Main = () => {
         index: skillsOrder[index],
       };
     });
-    console.log(skillsH);
     skillsH.sort((a, b) => a.index - b.index);
-    console.log(skillsH);
 
     const activitiesH: ActivityEntry[] = activities.map((h, i) => {
       const index = i + skills.length;
@@ -102,7 +99,7 @@ const Main = () => {
         </SearchForm>
       </SearchContainer>
       <Content>
-        <SkillTable data={skillsHiscore} />
+        <SkillTable data={skillsHiscore} loading={loading} />
       </Content>
     </Container>
   );
