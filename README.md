@@ -11,7 +11,7 @@ The project was build using the following tecnologies:
 - React
 - Typescript
 
-### Getting Started
+## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
