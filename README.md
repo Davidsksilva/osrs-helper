@@ -1,6 +1,8 @@
 # OSRS Helper
 
-Frontend project for the osrs helper tool. A web page that allows hiscore search, displaying the result in a good looking skill table. Future improvements includes guides for skills leveling and money making methods.
+Project for the osrs helper tool. A web page that allows hiscore search, displaying the result in a good looking skill table. Future improvements includes guides for skills leveling and money making methods.
+
+## Front-End
 
 Current functionalities:
 
@@ -11,16 +13,16 @@ The project was build using the following tecnologies:
 - React
 - Typescript
 
-## Getting Started
+### Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-### Prerequisites
+#### Prerequisites
 
 - NodeJS
 - A javascript package manager (eg. NPM, YARN)
 
-### Configuring
+#### Configuring
 
 First you need to install the dependencies, to do this, enter the following command in the project root directory:
 
@@ -34,7 +36,7 @@ or with NPM:
 npm i
 ```
 
-### Running
+#### Running
 
 To run the application with YARN:
 
